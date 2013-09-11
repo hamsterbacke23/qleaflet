@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="js/qleaflet.jquery.js"></script>
+</head>
+<body>
+  <style>
+    .map {
+      height: 400px;
+      width: 500px;
+    }
+    </style>
+
+  <!-- Map Example 1 -->
+  <h2>Map 1 - Simple</h2>
+  <div class="mymap1 map" data-markertext="Say Hello!" data-markerpos="47.6603300,9.1758200"></div>
+  <br>
+  <div class="mymap1 map" data-markertext="Voilà" data-markerpos="48.856638, 2.352241"></div>
+  <script>
+    $(function() {
+      $('.mymap1').qleaflet();
+    });
+  </script>
+
+
+
+  <!-- Map Example 2 -->
+  <h2>Map 2 - Advanced Options</h2>
+  <div class="mymap3 map" data-markertext="London Clouds" data-markerpos="51.507222, -0.1275"></div>
+  <script>
+    $(function() {
+      $('.mymap3').qleaflet({
+        providers: [{
+          providerName: 'MapQuestOpen'
+        },{
+          providerName: 'OpenWeatherMap',
+          variantName: 'Clouds'
+        }],
+        mapOptions : {
+          zoom: 2
+        }
+      });
+    });
+  </script>
+
+
+</body>
+</html>
