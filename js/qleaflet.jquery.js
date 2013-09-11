@@ -125,7 +125,7 @@
         }
 
         // set center
-        if(typeof this.element.data('center') != 'undefinfed' && this.element.data('center') != 0) {
+        if(typeof this.element.data('center').length != 'undefined' && this.element.data('center') != 0) {
           this.element.center = this.element.data('center').split(',');
         } else if (this.element.data('markerpos').length != 0) {
           this.element.center = this.element.data('markerpos').split(',');
