@@ -12,6 +12,9 @@ Dynamically loads leaflet js and css.
 <div data-center="48.882780,12.128906" class="mymap"></div>
 ```
 ```
+<div data-markerpos="48.882780,12.128906" data-markertext="My Markertext" class="mymap"></div>
+```
+```
 $('.mymap').qleaflet();
 ```
 
