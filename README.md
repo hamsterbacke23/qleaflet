@@ -10,7 +10,7 @@ Dynamically loads leaflet js and css.
 ## Usage 
 include qleaflet.jquery.js in website
 ```
-<script src="js/qleaflet.jquery.js"></script>
+<script src="/js/qleaflet.jquery.js"></script>
 ```
 Then:
 ```
