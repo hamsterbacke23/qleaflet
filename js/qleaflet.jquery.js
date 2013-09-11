@@ -9,17 +9,17 @@
     var pluginName = "qleaflet",
         defaults = {
           providers: [{
-            providerName: 'OpenStreetMap',
+            providerName: 'MapQuestOpen',
             variantName: false
           }],
-          leafletJsUri    : '/js/leaflet.js',
-          leafletCssUri   : '/css/leaflet.css',
-          leafletImageUri : '/img/leaflet/',
+          leafletJsUri    : 'http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js',
+          leafletCssUri   : 'http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css',
+          leafletImageUri : false,
           retina          : true,
           markers         : [],
           mapOptions: {
               center: [48.882780,12.128906],
-              zoom: 17,
+              zoom: 13,
               scrollWheelZoom : false
             }
         };
@@ -87,7 +87,9 @@
         if(this.element.markers.length === 0) {
           return;
         }
-        window.L.Icon.Default.imagePath = this.options.leafletImageUri;
+        if(this.options.leafletImageUri) {
+          window.L.Icon.Default.imagePath = this.options.leafletImageUri;
+        }
         for (var i = 0; i < this.element.markers.length; i++) {
           window.L.marker(this.element.markers[i].pos).addTo(this.map)
             .bindPopup(this.element.markers[i].text, {className: 'map-standort'})
@@ -125,9 +127,9 @@
         }
 
         // set center
-        if(typeof this.element.data('center').length != 'undefined' && this.element.data('center') != 0) {
+        if(typeof this.element.data('center') != 'undefined' && this.element.data('center').length != 0) {
           this.element.center = this.element.data('center').split(',');
-        } else if (this.element.data('markerpos').length != 0) {
+        } else if (typeof this.element.data('markerpos') != 'undefined' && this.element.data('markerpos').length != 0) {
           this.element.center = this.element.data('markerpos').split(',');
         } else {
           this.element.center = this.options.mapOptions.center;
@@ -213,7 +215,48 @@
                 }
               }
             }
-        }
+        },
+        OpenWeatherMap: {
+            options: {
+              attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+              opacity: 0.5
+            },
+            variants: {
+              Clouds: {
+                url: 'http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png'
+              },
+              CloudsClassic: {
+                url: 'http://{s}.tile.openweathermap.org/map/clouds_cls/{z}/{x}/{y}.png'
+              },
+              Precipitation: {
+                url: 'http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png'
+              },
+              PrecipitationClassic: {
+                url: 'http://{s}.tile.openweathermap.org/map/precipitation_cls/{z}/{x}/{y}.png'
+              },
+              Rain: {
+                url: 'http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png'
+              },
+              RainClassic: {
+                url: 'http://{s}.tile.openweathermap.org/map/rain_cls/{z}/{x}/{y}.png'
+              },
+              Pressure: {
+                url: 'http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png'
+              },
+              PressureContour: {
+                url: 'http://{s}.tile.openweathermap.org/map/pressure_cntr/{z}/{x}/{y}.png'
+              },
+              Wind: {
+                url: 'http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png'
+              },
+              Temperature: {
+                url: 'http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png'
+              },
+              Snow: {
+                url: 'http://{s}.tile.openweathermap.org/map/snow/{z}/{x}/{y}.png'
+              }
+            }
+          },
       }
     };
 
@@ -221,7 +264,7 @@
     // preventing against multiple instantiations
     $.fn[pluginName] = function ( options ) {
         return this.each(function () {
-            if (!$.data(this, "plugin_" + pluginName) || options.reset === true) {
+            if (!$.data(this, "plugin_" + pluginName) || (typeof options != 'undefined' && options.reset === true)) {
               $.data(this, "plugin_" + pluginName, new Plugin( this, options ));
             }
         });
