@@ -7,7 +7,12 @@ Provider format is taken from https://github.com/leaflet-extras/leaflet-provider
 Dynamically loads leaflet js and css.
 
 
-## Usage Example
+## Usage 
+include qleaflet.jquery.js in website
+```
+<script src="js/qleaflet.jquery.js"></script>
+```
+Then:
 ```
 <div data-center="48.882780,12.128906" class="mymap"></div>
 ```
