@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>qleaflet maps example</title>
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="js/qleaflet.jquery.js"></script>
   <style>
     body {
+      font-family: Helvetica, Arial;
       text-align: center;
     }
     main {
@@ -18,6 +19,21 @@
     .map {
       height: 400px;
       width: 100%;
+    }
+
+    /*leaflet is awesome*/
+    .paris .leaflet-popup-content-wrapper{
+      border-radius: 3px;
+      -webkit-box-shadow: 4px 5px 20px rgba(0,0,0,0.2);
+      box-shadow: 4px 5px 20px rgba(0,0,0,0.2);b
+    }
+    .paris .leaflet-popup-content-wrapper,
+    .paris .leaflet-popup-tip {
+      background: #e84533;
+    }
+    .paris .leaflet-popup-content{
+      font-size: 20px;
+      color: white;
     }
     </style>
 </head>
@@ -31,7 +47,7 @@
   <h2>Map 1 - Simple</h2>
   <div class="mymap1 map" data-markertext="Say Hello!" data-markerpos="47.6603300,9.1758200"></div>
   <br>
-  <div class="mymap1 map" data-markertext="Voilà" data-markerpos="48.856638, 2.352241"></div>
+  <div class="mymap1 paris map" data-markertext="Voilà" data-markerpos="48.856638, 2.352241"></div>
   <script>
     $(function() {
       $('.mymap1').qleaflet();
