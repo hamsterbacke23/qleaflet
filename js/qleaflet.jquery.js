@@ -5,7 +5,6 @@
  */
 ;(function ( $, window, document, undefined ) {
 
-    // Create the defaults once
     var pluginName = "qleaflet",
         defaults = {
           providers: [{
@@ -39,32 +38,20 @@
 
     Plugin.prototype = {
 
-      loadScript : function(url, callback) {
-         // adding the script tag to the head
-        var head                  = document.getElementsByTagName('head')[0];
-        var script                = document.createElement('script');
-        script.type               = 'text/javascript';
-        script.src                = url;
-        script.onreadystatechange = callback;
-        script.onload             = callback;
-
-        head.appendChild(script);
-      },
-
       loadStylesheet : function(url) {
-        var head        = document.getElementsByTagName('head')[0];
-        var stylesheet  = document.createElement('link');
-        stylesheet.type = 'text/css';
-        stylesheet.rel  = 'stylesheet';
-        stylesheet.href = url;
-
-        head.appendChild(stylesheet);
+        if($('link').filter('[href="'+url+'"]').length == 0) {
+          $('<link>').attr('rel','stylesheet')
+            .attr('type','text/css')
+            .attr('href',url)
+            .prependTo('head');
+        }
       },
 
       setMap : function() {
         var options               = this.options;
         options.mapOptions.center = this.element.center;
         var mmap = window.L.map; //IE 8
+        console.log('js',this.id);
         this.map                  = mmap(this.id, options.mapOptions);
         var providerData = {};
 
@@ -137,7 +124,8 @@
 
         //render
         this.loadStylesheet(this.options.leafletCssUri);
-        this.loadScript(this.options.leafletJsUri, this.bind(this.setMap, this));
+        $.getScript(this.options.leafletJsUri, this.bind(this.setMap, this));
+
       },
 
       /* Taken from https://github.com/leaflet-extras/leaflet-providers/blob/master/leaflet-providers.js */
