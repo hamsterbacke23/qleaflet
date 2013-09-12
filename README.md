@@ -5,7 +5,7 @@ Quick "plug-and-play" implementation of leaflet.js as a jquery plugin.
 Maps are responsive, leaflet.js also also allows for touch events.
 Multiple map tile providers can be used, e.g. cloud layer with normal map.
 Provider format is taken from https://github.com/leaflet-extras/leaflet-providers/blob/master/leaflet-providers.js.
-Dynamically loads leaflet js and css.
+Dynamically loads leaflet js and css via CDN or if you want locally.
 
 
 ## Usage 
