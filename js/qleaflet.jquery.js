@@ -51,7 +51,6 @@
         var options               = this.options;
         options.mapOptions.center = this.element.center;
         var mmap = window.L.map; //IE 8
-        console.log('js',this.id);
         this.map                  = mmap(this.id, options.mapOptions);
         var providerData = {};
 
