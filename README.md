@@ -27,19 +27,19 @@ $('.mymap').qleaflet();
 ## Advanced Options
 ```
 providers: [{
-  providerName: 'OpenStreetMap',
+  providerName: 'MapQuestOpen',
   variantName: false
 }],
-leafletJsUri    : '/js/leaflet.js',
-leafletCssUri   : '/css/leaflet.css',
-leafletImageUri : '/img/leaflet/',
+leafletJsUri    : 'http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js',
+leafletCssUri   : 'http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css',
+leafletImageUri : false,
 retina          : true,
 markers         : [],
 mapOptions: {
-    center: [48.882780,12.128906],
-    zoom: 17,
-    scrollWheelZoom : false
-  }
+  center: [48.882780,12.128906],
+  zoom: 13,
+  scrollWheelZoom : false
+}
 ```
 ## Advanced Example
 ```
