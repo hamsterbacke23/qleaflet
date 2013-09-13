@@ -8,7 +8,7 @@ Provider format is taken from https://github.com/leaflet-extras/leaflet-provider
 Dynamically loads leaflet js and css via CDN or if you want locally.
 
 ## Demo
-http://codepen.io/anon/pen/oLfId
+http://codepen.io/anon/pen/KchJa (not neccessarily up to date)
 
 ## Usage 
 include qleaflet.jquery.js in website
