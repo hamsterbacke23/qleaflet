@@ -41,6 +41,7 @@ mapOptions: {
   center: [48.882780,12.128906],
   zoom: 13,
   scrollWheelZoom : false
+  //  ... more leaflet.js options ...
 }
 ```
 ## Advanced Example
